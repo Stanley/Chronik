@@ -10,7 +10,7 @@ module Chronik
     #
     # year - [integer]
     #
-    # Returs Date
+    # Returns Date
     def easter(year)
       c = year/100
       n = year-19*(year/19)
@@ -27,15 +27,32 @@ module Chronik
       Date.new year, month, day
     end
 
+    # Defines dates relative to Easter.
+    #
+    # holidays - [Integer] or [Range]: offset in regard to Easter.
+    #
+    # Returns Proc.
     def easter_dates(holidays=0)
       holidays = [holidays] unless holidays.respond_to?(:map)
       dates(lambda{|year| holidays.map{|offset| easter(year) + offset} })
     end
 
+    # Defines one day of a year without specifying the year itself.
+    #
+    # month - [Integer]
+    # day   - [Integer]
+    #
+    # Returns Proc.
     def fixed_dates(month, day)
-      dates(lambda{|year| p year,month,day; Date.new(year, month, day) })
+      dates(lambda{|year| Date.new(year, month, day) })
     end
 
+    # Defines an infinite number of days, which can be retrieved by calling
+    # a block, returned by this method, with time range as an argument.
+    #
+    # days - [Proc]: calling it with a year should return a Date instance.
+    #
+    # Returns Proc.
     def dates(days)
       lambda do |range|
         (range.first.year..range.last.year).map do |year|

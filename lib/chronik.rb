@@ -1,6 +1,8 @@
+$:.unshift File.dirname(__FILE__) # For testing
+
 # stdlib
 require 'date'
 
 # internals
-require 'lib/chronik/chronik'
-require 'lib/chronik/label'
+require 'chronik/chronik'
+require 'chronik/label'
