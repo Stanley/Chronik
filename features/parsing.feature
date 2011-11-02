@@ -1,3 +1,4 @@
+# encoding: utf-8
 Feature: Parsing day class labels
   In order to know which days given label represent
   As a library user
@@ -12,7 +13,9 @@ Feature: Parsing day class labels
     Examples:
       | label                    | weekdays  | holidays              |
       | Dni Powszednie           | 1,2,3,4,5 |                       |
+      | W dni robocze            | 1,2,3,4,5 |                       |
       | Soboty                   | 6         |                       |
-      | Niedziele i Święta       | 0         | 24.04.2011,25.04.2011 |
       | Wielkanoc                |           | 24.04.2011,25.04.2011 |
       | Poniedziałek Wielkanocny |           | 25.04.2011            |
+      | Pon. - Czw.              | 1,2,3,4   |                       |
+      | Pt./Sob., Sob./Św.       | 5,6       |                       |

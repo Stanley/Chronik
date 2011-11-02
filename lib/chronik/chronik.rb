@@ -74,10 +74,14 @@ module Chronik
 
   WEEKDAYS = {
     [:*, :'tydzień'] => (0..6).to_a,
-    [:powszedni, :powszednie] => (1..5).to_a,
+    [:powszedni, :powszednie, :robocze] => (1..5).to_a,
     [:weekend, :weekendy] => [0,6],
     [:sobota, :soboty] => [6],
-    [:niedziela, :niedziele] => [0]
+    [:niedziela, :niedziele] => [0],
+    [:'pon.'] => [1],
+    [:'czw.'] => [4],
+    [:'piątek', :'piątki', :'pt./sob.'] => [5],
+    [:sobota, :soboty, :'sob./św.'] => [6]
   }
 
 end
